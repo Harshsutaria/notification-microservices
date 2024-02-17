@@ -1,4 +1,3 @@
-
 # notification-microservices
 
 This repository is responsible for sending notifications via different channels like sms,email.
