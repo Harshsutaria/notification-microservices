@@ -24,11 +24,22 @@ emailNotification.createClient = function () {
   return transporter;
 };
 
-emailNotification.sendMail = async function (emailPayload) {
+emailNotification.createEmailPayload = function (emailPayload) {
+  return {
+    from: process.env.EMAIL_ADDRESS, // Sender's email address
+    to: emailPayload.targetAudience.join(","), // Recipient's email address
+    subject: "Notification from notification service",
+    text: emailPayload.message,
+  };
+};
+
+emailNotification.sendMail = async function (payload) {
   let email;
   try {
     // create client for setting email transport.
     const client = emailNotification.createClient();
+    // creating email payload
+    const emailPayload = emailNotification.createEmailPayload(payload);
     email = await client.sendMail(emailPayload);
     logger.info(`email obj is ${JSON.stringify(email)}`);
     logger.info(`EMAIL SUCCESSFULLY SENDED TO ${emailPayload.to}`);
@@ -41,11 +52,3 @@ emailNotification.sendMail = async function (emailPayload) {
 };
 
 module.exports = emailNotification;
-
-//  Test payload
-// emailNotification.sendMail({
-//   from: "harshsutaria25@gmail.com", // Sender's email address
-//   to: "harshsutaria25@gmail.com", // Recipient's email address
-//   subject: "Test Email",
-//   text: "Papa meri jaan!!!!!!!!!",
-// });
