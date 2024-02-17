@@ -29,3 +29,5 @@ notificationService.send = async function (author, params, body) {
   logger.info(`SENDING PACKET TO BACKEND ${JSON.stringify(status)}`);
   return status;
 };
+
+module.exports = notificationService;

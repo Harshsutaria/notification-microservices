@@ -3,6 +3,7 @@ const {
   HTTPConst,
   buildError,
 } = require("../../utils/http-constants");
+const notificationService = require("./notification-service");
 const logger = require("../../utils/logger");
 
 /**
@@ -39,7 +40,7 @@ notificationHandler.post = async function (req, res) {
 };
 
 function getServiceArgs(req) {
-  if (!res.headers.userName || !res.header.password) {
+  if (!req.headers.userName || !req.header.password) {
     logger.info(`USERNAME AND PASSWORD ARE MANDATORY AUTH HEADERS`);
   }
 
