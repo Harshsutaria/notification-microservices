@@ -18,5 +18,10 @@ b.Upon queuing a job using SQS, we invoke an AWS Lambda function (a scalable com
 c. As we are using serverless computing. Increasing queue throughput and scaling lambda to handle increased load would be a piece of cake.
 
 
+# Steps:-
+
+1. npm i (to install dependencies)
+2. npm run start (to run the server)
+
 
 
