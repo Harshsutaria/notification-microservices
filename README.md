@@ -5,6 +5,7 @@ This repository is responsible for sending notifications via different channels 
 We have implemented 2 channels:- 
 
 1 sms:- Using twilio package to send sms to the verified mobile numbers.
+
 2.email:- We are using classic node mailer library for sending email to multiple users.
 
 
