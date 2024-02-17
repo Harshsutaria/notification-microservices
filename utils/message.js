@@ -15,6 +15,13 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
  */
 const messageImpl = {};
 
+messageImpl.createMessagePayload = function (payload) {
+  return {
+    from: process.env.TWILIO_PHONE_NUMBER,
+    to: payload.to,
+    body: payload.message,
+  };
+};
 /**
  * Method implemented to send sms using twilio package.
  *
@@ -34,8 +41,9 @@ messageImpl.sendMessage = async function (payload) {
 
   // Trying to send a message to using twilio client
   try {
-    message = await twilioClient.messages.create(payload);
-    logger.info(`MESSAGE SUCCESSFULLY SENDED TO ${payload.to}`);
+    const messagePayload = messageImpl.createMessagePayload(payload);
+    message = await twilioClient.messages.create(messagePayload);
+    logger.info(`MESSAGE SUCCESSFULLY SENDED TO ${messagePayload.to}`);
   } catch (error) {
     logger.error(`SENDING MESSAGE VIA TWILIO CLIENT FAILED ${error}`);
     throw new Error(error);
@@ -43,3 +51,5 @@ messageImpl.sendMessage = async function (payload) {
 
   return message?.body;
 };
+
+module.exports = messageImpl;
