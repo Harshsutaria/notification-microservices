@@ -27,7 +27,9 @@ c. As we are using serverless computing. Increasing queue throughput and scaling
 1. npm i (to install dependencies)
 2. npm run start (to run the server)
 
-# output ss:- 
+
+
+# Output ss:- 
 
 ![image](https://github.com/Harshsutaria/notification-microservices/assets/55646842/1a0fee73-f44d-4efa-8b55-163a6d68bcbf)
 ![image](https://github.com/Harshsutaria/notification-microservices/assets/55646842/49241f5d-7f59-4fb2-aad2-b64fe45b44d7)
